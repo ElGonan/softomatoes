@@ -1,0 +1,67 @@
+# =====================
+# OS
+# =====================
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# =====================
+# Editor / IDE
+# =====================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# =====================
+# Logs
+# =====================
+*.log
+
+# =====================
+# Build / Output
+# =====================
+build/
+dist/
+out/
+bin/
+obj/
+
+# =====================
+# Temporary files
+# =====================
+tmp/
+temp/
+.cache/
+
+# =====================
+# Environment / secrets
+# =====================
+.env
+.env.*
+!.env.example
+
+# =====================
+# Archives
+# =====================
+*.zip
+*.tar
+*.tar.gz
+*.rar
+
+# =====================
+# Windows specific
+# =====================
+$RECYCLE.BIN/
+System Volume Information/
+
+# =====================
+# Node.js
+# =====================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
