@@ -8,3 +8,5 @@ export type Cell = {
 export type Grid = Cell[][];
 
 export type Difficulty = "easy" | "medium" | "hard";
+
+export type RevealResult = "hit-mine" | "revealed" | "ignored"

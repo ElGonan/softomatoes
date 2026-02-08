@@ -2,9 +2,12 @@
  * Main server config
  */
 import express, { Request, Response } from "express";
+import { routes } from "./router/routes";
 
 const app: any = express();
 const port: number = 3000;
+
+app.use("/game", routes)
 
 app.get('/', (req: any, res: any) => {
     res.send('Here the minesweeper!');
