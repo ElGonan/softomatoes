@@ -1,5 +1,5 @@
 
-import { Difficulty, Grid, RevealResult } from "../types.interface";
+import { Difficulty, Game, Grid, RevealResult } from "../types.interface";
 import { createGrid } from "./grid";
 
 
@@ -161,4 +161,23 @@ const revealCell = (grid: Grid, row: number, col: number): RevealResult => {
     };
 
 
-export { placeMines, mineSet, revealCell, checkEmptyness }
+const isGridEmpty = (game: Game): boolean => {
+    /**
+     * Check if the grid is empty (all non-mine cells revealed), if it is, means the user won
+     */
+
+    // check the grid
+    const grid = game.grid;
+
+    for (let r = 0; r < grid.length; r++) {
+        for (let c = 0; c < grid[r].length; c++) {
+            const cell = grid[r][c];
+            if (!cell.isMine && !cell.isRevealed) return false;
+        }
+    }
+    
+    return true;
+}
+
+
+export { placeMines, mineSet, revealCell, checkEmptyness, isGridEmpty }

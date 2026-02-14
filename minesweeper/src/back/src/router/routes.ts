@@ -3,24 +3,34 @@
  */
 
 import express from "express"
-import { Difficulty } from "../types.interface"
-import { createGame } from "../utils/game"
-import { revealCell } from "../utils/mines"
+import { Request, Response } from "express";
+import { getGame, startNewGame, revealInCurrentGame, deleteGame } from "../utils/store"
 
 const routes = express.Router()
 
-routes.get(`/start:difficulty`, (req: any, res: any) => {
+routes.post(`/start`, (req: Request, res: Response) => {
     
-    const difficulty = req.params;
+    const difficulty = req.body.difficulty;
 
-    res.send(createGame(difficulty))
+    res.send(startNewGame(difficulty));
 })
 
 
+routes.post(`/reveal`, (req: Request, res: Response) => {
 
-routes.post(`/sendSelection`, (req: any, res: any) => {
+    res.send(revealInCurrentGame(
+        req.body.gameId,
+        req.body.row,
+        req.body.col
+    ));
+})
 
-    res.send(revealCell(req.params.grid, req.params.row, req.params.col))
+
+routes.post(`/delete`, (req: Request, res: Response) => {
+
+    deleteGame(req.body.gameId)
+    
+    res.send({"message": "game deleted"})
 })
 
 export { routes }

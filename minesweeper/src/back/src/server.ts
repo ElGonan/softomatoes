@@ -4,8 +4,10 @@
 import express, { Request, Response } from "express";
 import { routes } from "./router/routes";
 
-const app: any = express();
+const app = express();
 const port: number = 3000;
+
+app.use(express.json());
 
 app.use("/game", routes)
 
