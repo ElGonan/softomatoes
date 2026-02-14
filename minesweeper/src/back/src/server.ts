@@ -8,11 +8,12 @@ const app = express();
 const port: number = 3000;
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.use("/game", routes)
 
 app.get('/', (req: any, res: any) => {
-    res.send('Here the minesweeper!');
+    res.send('Minesweeper here adn running!');
 });
 
 app.listen(port, () => {

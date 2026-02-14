@@ -3,13 +3,14 @@
  */
 
 import { Game, Difficulty, State } from "../types.interface";
-import { createGame, revealInGame } from "./game";
+import { createGame, revealInGame, setFlag } from "./game";
 
 const games = new Map<string, Game>();
 
 const startNewGame = (difficulty: Difficulty): Game => {
     const game = createGame(difficulty);
     games.set(game.id, game);
+    console.log("[StartNewGame] - game id -> ", game.id);
     return getPublicGame(game);
 };
 
@@ -21,6 +22,8 @@ const getGame = (gameId: string) => {
 
 const revealInCurrentGame = (gameId: string, row: number, col: number) => {
     const game = games.get(gameId);
+    console.log("[RevealCurrentGame] - List of games -> ", games);
+    
     if (!game) {
         throw new Error("Game not found");
     }
@@ -30,6 +33,21 @@ const revealInCurrentGame = (gameId: string, row: number, col: number) => {
         state
     };
 };
+
+
+const flagCell = (gameId: string, row: number, col: number) => {
+    const game = games.get(gameId);
+    if (!game) {
+        throw new Error("Game not found");
+    }
+
+    return {
+        game: getPublicGame(setFlag(game, row, col)),
+        state: game.state
+    }
+
+}
+
 
 const deleteGame = (gameId: string): void => {
     games.delete(gameId);
@@ -60,4 +78,4 @@ const getPublicGame = (game: Game) => {
     };
 };
 
-export { startNewGame, getGame, revealInCurrentGame, deleteGame, clearAllGames, getPublicGame };
+export { startNewGame, getGame, revealInCurrentGame, deleteGame, clearAllGames, getPublicGame, flagCell };

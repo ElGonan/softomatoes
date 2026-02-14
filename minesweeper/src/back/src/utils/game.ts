@@ -8,8 +8,14 @@ import { createGrid } from "./grid";
 import { placeMines, revealCell, isGridEmpty } from "./mines";
 
 const createGame = (dif: Difficulty): Game => {
-    // get the first grid
+    // make sure to have a difficulty value to save
+    let difficulty: Difficulty;
+    if (!dif){
+        difficulty = "medium";
+    } else difficulty = dif;
+    
 
+    // get the first grid
     const grid: Grid = createGrid(dif);
     
     // We set the mines
@@ -17,11 +23,13 @@ const createGame = (dif: Difficulty): Game => {
 
     // we create the game layout
     const game: Game = {
-        difficulty: dif,
+        difficulty: difficulty,
         state: "running",
         id: generateRandomId(10),
         grid: grid
     }
+
+    console.log("[CreateGame] - difficulty ->", dif);
 
     return game
 };
@@ -63,7 +71,23 @@ export const revealInGame = (
 }
 
 
+export const setFlag = (
+    game: Game,
+    row: number,
+    col: number
+): Game => {
+    /**
+     * Set a cell as flagged
+     */
 
+    const size = game.grid.length;
+    if (row >= 0 && row < size && col >= 0 && col < size) {
+        // Set the flag to the opposite of whatever it is.
+        game.grid[row][col].isFlagged = !game.grid[row][col].isFlagged;
+    }
+
+    return game
+}
 
 
 
