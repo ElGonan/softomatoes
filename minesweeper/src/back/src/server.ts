@@ -3,8 +3,14 @@
  */
 import express, { Request, Response } from "express";
 import { routes } from "./router/routes";
+import cors from "cors";
 
 const app = express();
+
+app.use(cors({
+    origin: ['http://127.0.0.1:5500', 'https://your-frontend.com']
+}));
+
 const port: number = Number(process.env.PORT) || 3000;
 
 app.use(express.json());
