@@ -7,11 +7,11 @@ export async function startGame() {
      */
 
     try {
-        const res = await fetch(baseURL + 'game/start', {
+        const res = await fetch(baseURL + '/game/start', {
             method: 'POST',
-            headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
+            headers: {'Content-Type': 'application/json'}
         });
-        console.log(res);
+        console.log(await res.json());
     } catch (error) {
         console.log(error);
         throw error;
