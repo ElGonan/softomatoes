@@ -8,7 +8,7 @@ import cors from "cors";
 const app = express();
 
 app.use(cors({
-    origin: ['http://127.0.0.1:5500', 'https://softomatoes-minesweeper.netlify.app/']
+    origin: ['http://127.0.0.1:5500', 'https://softomatoes-minesweeper.netlify.app']
 }));
 
 const port: number = Number(process.env.PORT) || 3000;
