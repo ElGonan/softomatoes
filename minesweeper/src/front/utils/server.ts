@@ -1,7 +1,7 @@
 
 export const baseURL = "https://softomatoes-minesweeper-back.onrender.com"
 
-export async function startGame() {
+export async function startGame(dif: string) {
     /**
      * Start a new game via calling the correct endpoint
      */
@@ -9,6 +9,9 @@ export async function startGame() {
     try {
         const res = await fetch(baseURL + '/game/start', {
             method: 'POST',
+            body: JSON.stringify({
+                "difficulty": dif
+            }),
             headers: {'Content-Type': 'application/json'}
         });
         return res;

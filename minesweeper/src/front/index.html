@@ -9,9 +9,16 @@
 <body>
     <div id="game-container">
         <h1>Minesweeper</h1>
+        <label for="difficulty">Choose a difficulty</label>
+            <select name="difficulty" id="difficulty">
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+            </select>
         <div id="game-board"></div>
         <button id="start-game">Start Game</button>
         <label id="game-id">Hit play</label>
+        <button id="mode-toggle">Flag Mode</button>
         <!--Game grid-->
         <div>
             <table id="game-table">
