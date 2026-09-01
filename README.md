@@ -8,4 +8,6 @@ The languages used in these projects may vary, everything is specified in the RE
 
 ## Projects
 - [ Pomodoro ]
+- [ Minesweeper ]
+- [ yt2mp3 ]
 
