@@ -25,14 +25,14 @@ class Ball():
         self.posy += self.speed * self.yFac
         
         # If the ball hits top or bottom, reflect the trajectory
-        if self.posy <= 0 or self.posy >= self.screen.height:
+        if self.posy <= 0 or self.posy >= self.screen.get_height():
             self.yFac *= -1
 
         # If the ball touches left side of the screen, we set the score!
         if self.posx <= 0 and self.firstTime:
             self.firstTime = 0
             return 1
-        elif self.posx >= self.screen.width and self.firstTime:
+        elif self.posx >= self.screen.get_width() and self.firstTime:
             self.firstTime = 0
             return -1
         else:
@@ -41,8 +41,8 @@ class Ball():
 
     # Reset the ball position
     def reset(self):
-        self.posx = self.screen.height//2
-        self.posy = self.screen.width//2
+        self.posx = self.screen.get_height()//2
+        self.posy = self.screen.get_width()//2
         self.xFac *= -1
         self.firstTime = 1
 

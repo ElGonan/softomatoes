@@ -21,7 +21,7 @@ BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 GREEN = (0, 255, 0)
 
-WIDTH = 900
+WIDTH = 1200
 HEIGHT = 600
 
 FPS = 45
@@ -41,8 +41,8 @@ def main():
 
     screen, clock = _build_start()
 
-    paddle1 = Paddle(20, 0, 10, 100, 10, GREEN, screen)
-    paddle2 = Paddle(20, 0, 10, 100, 10, GREEN, screen)
+    paddle1 = Paddle(20, 0, 10, 100, 20, GREEN, screen)
+    paddle2 = Paddle(WIDTH - 30, 0, 10, 100, 20, GREEN, screen)
     ball = Ball(WIDTH//2, HEIGHT//2, 7, 7, WHITE, screen)
 
     list_of_paddles = [paddle1, paddle2]
@@ -105,7 +105,7 @@ def main():
 
         # display the scores
         paddle1.displayScore(FONT, "Paddle 1: ", paddle1Score, 100, 20, WHITE)
-        paddle2.displayScore(FONT, "Paddle 2: ", paddle2Score, -100, 20, WHITE)
+        paddle2.displayScore(FONT, "Paddle 2: ", paddle2Score, WIDTH - 100, 20, WHITE)
 
         pygame.display.update()
 

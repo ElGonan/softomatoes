@@ -34,8 +34,8 @@ class Paddle():
         # Restrict paddle to screensize
         if self.posy <= 0:
             self.posy = 0
-        elif self.posy + self.height >= self.screen.height:
-            self.posy = self.screen.height - self.height
+        elif self.posy + self.height >= self.screen.get_height():
+            self.posy = self.screen.get_height() - self.height
 
         # update drawing with new values
         self.paddleRect = (self.posx, self.posy, self.width, self.height)
