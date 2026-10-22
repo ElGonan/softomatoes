@@ -13,7 +13,9 @@ import pygame
 from ball import Ball
 from paddle import Paddle
 
-FONT = pygame.font.Font('freesansbold.ttf', 20)
+pygame.init()
+
+FONT = pygame.font.Font('CaskaydiaMonoNerdFont-Italic.ttf', 20)
 
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
@@ -26,9 +28,6 @@ FPS = 45
 
 
 def _build_start():
-
-    pygame.init()
-
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
     pygame.display.set_caption("Pongg")
 
@@ -57,7 +56,7 @@ def main():
 
         # Handle events
         for event in pygame.event.get():
-            if event.type == pygame.QUIT():
+            if event.type == pygame.QUIT:
                 running = False
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_UP:
@@ -68,11 +67,11 @@ def main():
                     paddle1YFac = -1
                 if event.key == pygame.K_s:
                     paddle1YFac = 1
-                if event.key == pygame.KEYUP:
-                    if event.key == pygame.K_UP or event.key == pygame.K_DOWN:
-                        geek2YFac = 0
-                    if event.key == pygame.K_w or event.key == pygame.K_s:
-                        geek1YFac = 0
+            if event.type == pygame.KEYUP:
+                if event.key == pygame.K_UP or event.key == pygame.K_DOWN:
+                    paddle2YFac = 0
+                if event.key == pygame.K_w or event.key == pygame.K_s:
+                    paddle1YFac = 0
 
         # Detect collision
         for paddle in list_of_paddles:
@@ -106,7 +105,7 @@ def main():
 
         # display the scores
         paddle1.displayScore(FONT, "Paddle 1: ", paddle1Score, 100, 20, WHITE)
-        paddle2.displayScore(FONT, "Paddle 2: ", paddle1Score, -100, 20, WHITE)
+        paddle2.displayScore(FONT, "Paddle 2: ", paddle2Score, -100, 20, WHITE)
 
         pygame.display.update()
 
