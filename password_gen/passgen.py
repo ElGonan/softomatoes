@@ -4,7 +4,10 @@
 import string
 import random
 
-length = int(input("Enter password length: "))
+length = int(input("""
+Enter password length or enter "999" for valid only chars: 
+"""))
+
 
 pwd = []
 
@@ -14,7 +17,12 @@ charsList += "," # just to break csv in case it leaks
 
 charsList += string.ascii_letters
 charsList += string.digits
-charsList += string.punctuation
+
+if length != 999:
+    charsList += string.punctuation
+else:
+    length = int(input("Enter the password lenght, now it does not contain punctuation: "))
+    
 
 # just in case, one more ingredient
 
