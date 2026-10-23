@@ -12,12 +12,13 @@ import pygame
 import pygame_widgets
 from pygame_widgets.button import Button
 
-from ball import Ball
-from paddle import Paddle
+from classes.ball import Ball
+from classes.paddle import Paddle
 
 pygame.init()
 
-FONT = pygame.font.Font('CaskaydiaMonoNerdFont-Italic.ttf', 20)
+FONT = pygame.font.Font('./public/CaskaydiaMonoNerdFont-Italic.ttf', 20)
+SUBFONT = pygame.font.Font('./public/CaskaydiaMonoNerdFont-Italic.ttf', 10)
 
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
@@ -29,7 +30,7 @@ HEIGHT = 400
 
 FPS = 45
 
-VERSION = "0.0.0"
+VERSION = "1.1"
 
 
 def _build_start():
@@ -48,7 +49,7 @@ def _main_menu():
     main_text_rect = main_text.get_rect()
     main_text_rect.center = (WIDTH//2, HEIGHT//4)
 
-    v_text = FONT.render(f"Made by ElGonan. v{VERSION}", True, GRAY)
+    v_text = SUBFONT.render(f"Made by ElGonan. v{VERSION}", True, GRAY)
     v_rect = v_text.get_rect()
     v_rect.center = (WIDTH//2, HEIGHT-20)
 
@@ -60,7 +61,7 @@ def _main_menu():
         HEIGHT//2,
         WIDTH//2,
         HEIGHT//6,
-        text="Play!",
+        text="Play",
         fontSize=20,
         radius=20,
         onClick=lambda: _game(screen,clock)
