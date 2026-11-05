@@ -1,0 +1,19 @@
+[project]
+name = "yt2mp4"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Alan González", email = "alanpagzz@outlook.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "yt-dlp[default]>=2026.10.26",
+]
+
+[project.scripts]
+yt2mp4 = "yt2mp4:main"
+
+[build-system]
+requires = ["uv_build>=0.12.3,<0.13.0"]
+build-backend = "uv_build"
